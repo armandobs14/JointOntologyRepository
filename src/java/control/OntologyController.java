@@ -5,6 +5,8 @@
 package control;
 
 import KAO.Kao;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,6 +45,7 @@ public class OntologyController extends Controller{
         Ontology ontology = ontologyKao.create("ontology_" + contador);
         //setando suas propriedades
         //setando nome
+        System.out.println(name);
         ontology.setFoafName(name);
         
         //setando uri
@@ -88,11 +91,28 @@ public class OntologyController extends Controller{
      * @return A Ontology Object
      */
     public Set<String> retrieveOntologiesByName(String nameOntology) {
-//TODO: retornar todas as ontologias com aquele nome. Utilizar o retrieve all instances.
+        Kao ontologyKao = new Kao(Ontology.class,repositoryURI);
         Set<String> ontologies = new HashSet<String>();
-        ontologies.add("onto1");
-        ontologies.add("onto2");
-        //return "ontology retrieved!!!!";
+        StringBuilder query = new StringBuilder();
+        
+        query.append("PREFIX repo:<"+repositoryURI+"#>");
+        query.append("PREFIX foaf:<"+foafURI+"#>");
+        query.append("select ?x where {?x foaf:name '").append(nameOntology.toLowerCase()).append("'}"); 
+        
+        System.out.println(query.toString());
+        
+        List<Object> ontologiesList = ontologyKao.executeQueryAsList(query.toString());
+        
+        for (Object object : ontologiesList) {
+            Ontology onto = (Ontology) object;
+            JsonObject obj = new JsonObject();
+            
+            obj.addProperty("name",onto.getFoafName());
+            obj.addProperty("ontologyURI",onto.getUri());
+            obj.addProperty("propertyURI",onto.toString());
+            obj.addProperty("filePath",onto.getFile_path());
+            ontologies.add(obj.toString());
+        }
         return ontologies;
      }
     

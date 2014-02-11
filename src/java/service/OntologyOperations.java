@@ -5,11 +5,13 @@
 package service;
 
 
+import com.google.gson.JsonObject;
 import control.OntologyController;
 import java.util.Set;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import joint.codegen.ns4ca56aaf.Ontology;
 
 
 
@@ -22,6 +24,11 @@ public class OntologyOperations {
     
     private OntologyController ontologyController = new OntologyController();
 
+    /**
+     *This method retrieve ontologyURI
+     * @param ontologyName
+     * @return Set of ontologyURI
+     */
     @WebMethod(operationName = "retrieveOntologiesByName")
     public Set<String> retrieveOntologiesByName(@WebParam(name = "ontologyName") String ontologyName)
     {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
   <endpoint implementation="service.OntologyOperations" name="OntologyOperations" url-pattern="/OntologyOperations"/>
-  <endpoint implementation="service.UserOperations" name="UserOperations" url-pattern="/UserOperations"/>
   <endpoint implementation="service.ForumOperations" name="ForumOperations" url-pattern="/ForumOperations"/>
+  <endpoint implementation="service.UserOperations" name="UserOperations" url-pattern="/UserOperations"/>
 </endpoints>

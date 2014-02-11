@@ -72,13 +72,11 @@ public class OntologyController extends Controller{
         }
         ontology.setHas_class(setClass);
         //setando tags (area)
-        //Set<Tag> setTag = new HashSet<Tag>();
-        //String[] tagList = tags.split(",");
-        //    for (String tagName : tagList) {
-        //        setTag.add(TagController.getTagByTagName(tagName));        
-        //}
-        //ontology.setHas_tag(setTag);
-        System.out.println(tags);
+        Set<Tag> setTag = new HashSet<Tag>();        
+        for (String tagName : tags) {
+            setTag.add(TagController.getTagByTagName(tagName.trim()));
+        }
+        ontology.setHas_tag(setTag);
         //fechando conexao
         ontologyKao.save();
     }

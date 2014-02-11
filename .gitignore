@@ -1,6 +1,7 @@
 *.class
+nbproject
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.ear

@@ -1,0 +1,1297 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY sioc "http://rdfs.org/sioc/ns#" >
+    <!ENTITY wot "http://xmlns.com/wot/0.1/" >
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY vs "http://www.w3.org/2003/06/sw-vocab-status/ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://rdfs.org/sioc/ns#"
+     xml:base="http://rdfs.org/sioc/ns"
+     xmlns:sioc="http://rdfs.org/sioc/ns#"
+     xmlns:wot="http://xmlns.com/wot/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://rdfs.org/sioc/ns#">
+        <owl:versionInfo>Revision: 1.35</owl:versionInfo>
+        <rdfs:seeAlso rdf:resource="http://rdfs.org/sioc/spec"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&sioc;embeds_knowledge">
+        <rdfs:label xml:lang="en">embeds knowledge</rdfs:label>
+        <rdfs:comment xml:lang="en">This links Items to embedded statements, facts and structured content.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/references -->
+
+    <owl:ObjectProperty rdf:about="&dcterms;references"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/subject -->
+
+    <owl:ObjectProperty rdf:about="&dcterms;subject"/>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#about -->
+
+    <owl:ObjectProperty rdf:about="&sioc;about">
+        <rdfs:label xml:lang="en">about</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies that this Item is about a particular resource, e.g. a Post describing a book, hotel, etc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#account_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;account_of">
+        <rdfs:label xml:lang="en">account of</rdfs:label>
+        <rdfs:comment xml:lang="en">Refers to the foaf:Agent or foaf:Person who owns this sioc:UserAccount.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+        <owl:inverseOf rdf:resource="&foaf;account"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#addressed_to -->
+
+    <owl:ObjectProperty rdf:about="&sioc;addressed_to">
+        <rdfs:label xml:lang="en">addressed to</rdfs:label>
+        <rdfs:comment xml:lang="en">Refers to who (e.g. a UserAccount, e-mail address, etc.) a particular Item is addressed to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#administrator_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;administrator_of">
+        <rdfs:label xml:lang="en">administrator of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Site that the UserAccount is an administrator of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Site"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#attachment -->
+
+    <owl:ObjectProperty rdf:about="&sioc;attachment">
+        <rdfs:label xml:lang="en">attachment</rdfs:label>
+        <rdfs:comment xml:lang="en">The URI of a file attached to an Item.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#avatar -->
+
+    <owl:ObjectProperty rdf:about="&sioc;avatar">
+        <rdfs:label xml:lang="en">avatar</rdfs:label>
+        <rdfs:comment xml:lang="en">An image or depiction used to represent this UserAccount.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:subPropertyOf rdf:resource="&foaf;depiction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#container_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;container_of">
+        <rdfs:label xml:lang="en">container of</rdfs:label>
+        <rdfs:comment xml:lang="en">An Item that this Container contains.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Container"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <owl:inverseOf rdf:resource="&sioc;has_container"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#creator_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;creator_of">
+        <rdfs:label xml:lang="en">creator of</rdfs:label>
+        <rdfs:comment xml:lang="en">A resource that the UserAccount is a creator of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <owl:inverseOf rdf:resource="&sioc;has_creator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#earlier_version -->
+
+    <owl:ObjectProperty rdf:about="&sioc;earlier_version">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">earlier version</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to a previous (older) revision of this Item or Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <owl:inverseOf rdf:resource="&sioc;later_version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#email -->
+
+    <owl:ObjectProperty rdf:about="&sioc;email">
+        <rdfs:label xml:lang="en">email</rdfs:label>
+        <rdfs:comment xml:lang="en">An electronic mail address of the UserAccount.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#embeds_knowledge -->
+
+    <owl:ObjectProperty rdf:about="&sioc;embeds_knowledge">
+        <rdfs:label xml:lang="en">embeds knowledge</rdfs:label>
+        <rdfs:comment xml:lang="en">This links Items to embedded statements, facts and structured content.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#feed -->
+
+    <owl:ObjectProperty rdf:about="&sioc;feed">
+        <rdfs:label xml:lang="en">feed</rdfs:label>
+        <rdfs:comment xml:lang="en">A feed (e.g. RSS, Atom, etc.) pertaining to this resource (e.g. for a Forum, Site, UserAccount, etc.).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#follows -->
+
+    <owl:ObjectProperty rdf:about="&sioc;follows">
+        <rdfs:label xml:lang="en">follows</rdfs:label>
+        <rdfs:comment xml:lang="en">Indicates that one UserAccount follows another UserAccount (e.g. for microblog posts or other content item updates).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#function_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;function_of">
+        <rdfs:label xml:lang="en">function of</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that has this Role.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Role"/>
+        <owl:inverseOf rdf:resource="&sioc;has_function"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#group_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;group_of">
+        <rdfs:label xml:lang="en">group of</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property has been renamed. Use sioc:usergroup_of instead.</owl:versionInfo>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_administrator -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_administrator">
+        <rdfs:label xml:lang="en">has administrator</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that is an administrator of this Site.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Site"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+        <owl:inverseOf rdf:resource="&sioc;administrator_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_container -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_container">
+        <rdfs:label xml:lang="en">has container</rdfs:label>
+        <rdfs:comment xml:lang="en">The Container to which this Item belongs.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Container"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_creator -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_creator">
+        <rdfs:label xml:lang="en">has creator</rdfs:label>
+        <rdfs:comment xml:lang="en">This is the UserAccount that made this resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_discussion -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_discussion">
+        <rdfs:label xml:lang="en">has discussion</rdfs:label>
+        <rdfs:comment xml:lang="en">The discussion that is related to this Item.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_function -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_function">
+        <rdfs:label xml:lang="en">has function</rdfs:label>
+        <rdfs:comment xml:lang="en">A Role that this UserAccount has.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_group -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_group">
+        <rdfs:label xml:lang="en">has group</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property has been renamed. Use sioc:has_usergroup instead.</owl:versionInfo>
+        <owl:inverseOf rdf:resource="&sioc;group_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_host -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_host">
+        <rdfs:label xml:lang="en">has host</rdfs:label>
+        <rdfs:comment xml:lang="en">The Site that hosts this Forum.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Forum"/>
+        <rdfs:range rdf:resource="&sioc;Site"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_member -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_member">
+        <rdfs:label xml:lang="en">has member</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that is a member of this Usergroup.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+        <rdfs:domain rdf:resource="&sioc;Usergroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_moderator -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_moderator">
+        <rdfs:label xml:lang="en">has moderator</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that is a moderator of this Forum.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Forum"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_modifier -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_modifier">
+        <rdfs:label xml:lang="en">has modifier</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that modified this Item.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+        <owl:inverseOf rdf:resource="&sioc;modifier_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_owner -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_owner">
+        <rdfs:label xml:lang="en">has owner</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that this resource is owned by.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+        <owl:inverseOf rdf:resource="&sioc;owner_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_parent -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_parent">
+        <rdfs:label xml:lang="en">has parent</rdfs:label>
+        <rdfs:comment xml:lang="en">A Container or Forum that this Container or Forum is a child of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Container"/>
+        <rdfs:range rdf:resource="&sioc;Container"/>
+        <owl:inverseOf rdf:resource="&sioc;parent_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_part -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_part">
+        <rdfs:label xml:lang="en">has part</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property is deprecated. Use dcterms:hasPart from the Dublin Core ontology instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">An resource that is a part of this subject.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <owl:inverseOf rdf:resource="&sioc;part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_reply -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_reply">
+        <rdfs:label xml:lang="en">has reply</rdfs:label>
+        <rdfs:comment xml:lang="en">Points to an Item or Post that is a reply or response to this Item or Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:subPropertyOf rdf:resource="&sioc;related_to"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_scope -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_scope">
+        <rdfs:label xml:lang="en">has scope</rdfs:label>
+        <rdfs:comment xml:lang="en">A resource that this Role applies to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_space -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_space">
+        <rdfs:label xml:lang="en">has space</rdfs:label>
+        <rdfs:comment xml:lang="en">A data Space which this resource is a part of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Space"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_subscriber -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_subscriber">
+        <rdfs:label xml:lang="en">has subscriber</rdfs:label>
+        <rdfs:comment xml:lang="en">A UserAccount that is subscribed to this Container.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Container"/>
+        <rdfs:range rdf:resource="&sioc;UserAccount"/>
+        <rdfs:seeAlso rdf:resource="&sioc;feed"/>
+        <owl:inverseOf rdf:resource="&sioc;subscriber_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#has_usergroup -->
+
+    <owl:ObjectProperty rdf:about="&sioc;has_usergroup">
+        <rdfs:label xml:lang="en">has usergroup</rdfs:label>
+        <rdfs:comment xml:lang="en">Points to a Usergroup that has certain access to this Space.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Space"/>
+        <rdfs:range rdf:resource="&sioc;Usergroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#host_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;host_of">
+        <rdfs:label xml:lang="en">host of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Forum that is hosted on this Site.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Forum"/>
+        <rdfs:domain rdf:resource="&sioc;Site"/>
+        <owl:inverseOf rdf:resource="&sioc;has_host"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#later_version -->
+
+    <owl:ObjectProperty rdf:about="&sioc;later_version">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">later version</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to a later (newer) revision of this Item or Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#latest_version -->
+
+    <owl:ObjectProperty rdf:about="&sioc;latest_version">
+        <rdfs:label xml:lang="en">latest version</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the latest revision of this Item or Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#link -->
+
+    <owl:ObjectProperty rdf:about="&sioc;link">
+        <rdfs:label xml:lang="en">link</rdfs:label>
+        <rdfs:comment xml:lang="en">A URI of a document which contains this SIOC object.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#links_to -->
+
+    <owl:ObjectProperty rdf:about="&sioc;links_to">
+        <rdfs:label xml:lang="en">links to</rdfs:label>
+        <rdfs:comment xml:lang="en">Links extracted from hyperlinks within a SIOC concept, e.g. Post or Site.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;references"/>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#member_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;member_of">
+        <rdfs:label xml:lang="en">member of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Usergroup that this UserAccount is a member of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:range rdf:resource="&sioc;Usergroup"/>
+        <owl:inverseOf rdf:resource="&sioc;has_member"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#moderator_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;moderator_of">
+        <rdfs:label xml:lang="en">moderator of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Forum that a UserAccount is a moderator of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Forum"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <owl:inverseOf rdf:resource="&sioc;has_moderator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#modifier_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;modifier_of">
+        <rdfs:label xml:lang="en">modifier of</rdfs:label>
+        <rdfs:comment xml:lang="en">An Item that this UserAccount has modified.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#next_by_date -->
+
+    <owl:ObjectProperty rdf:about="&sioc;next_by_date">
+        <rdfs:label xml:lang="en">next by date</rdfs:label>
+        <rdfs:comment xml:lang="en">Next Item or Post in a given Container sorted by date.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <owl:inverseOf rdf:resource="&sioc;previous_by_date"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#next_version -->
+
+    <owl:ObjectProperty rdf:about="&sioc;next_version">
+        <rdfs:label xml:lang="en">next version</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the next revision of this Item or Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <rdfs:subPropertyOf rdf:resource="&sioc;later_version"/>
+        <owl:inverseOf rdf:resource="&sioc;previous_version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#owner_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;owner_of">
+        <rdfs:label xml:lang="en">owner of</rdfs:label>
+        <rdfs:comment xml:lang="en">A resource owned by a particular UserAccount, for example, a weblog or image gallery.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#parent_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;parent_of">
+        <rdfs:label xml:lang="en">parent of</rdfs:label>
+        <rdfs:comment xml:lang="en">A child Container or Forum that this Container or Forum is a parent of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Container"/>
+        <rdfs:domain rdf:resource="&sioc;Container"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#part_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;part_of">
+        <rdfs:label xml:lang="en">part of</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <rdfs:comment xml:lang="en">A resource that the subject is a part of.</rdfs:comment>
+        <owl:versionInfo>This property is deprecated. Use dcterms:isPartOf from the Dublin Core ontology instead.</owl:versionInfo>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#previous_by_date -->
+
+    <owl:ObjectProperty rdf:about="&sioc;previous_by_date">
+        <rdfs:label xml:lang="en">previous by date</rdfs:label>
+        <rdfs:comment xml:lang="en">Previous Item or Post in a given Container sorted by date.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#previous_version -->
+
+    <owl:ObjectProperty rdf:about="&sioc;previous_version">
+        <rdfs:label xml:lang="en">previous version</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to the previous revision of this Item or Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:subPropertyOf rdf:resource="&sioc;earlier_version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#reference -->
+
+    <owl:ObjectProperty rdf:about="&sioc;reference">
+        <rdfs:label xml:lang="en">reference</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>Renamed to sioc:links_to.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Links either created explicitly or extracted implicitly on the HTML level from the Post.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#related_to -->
+
+    <owl:ObjectProperty rdf:about="&sioc;related_to">
+        <rdfs:label xml:lang="en">related to</rdfs:label>
+        <rdfs:comment xml:lang="en">Related Posts for this Post, perhaps determined implicitly from topics or references.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#reply_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;reply_of">
+        <rdfs:label xml:lang="en">reply of</rdfs:label>
+        <rdfs:comment xml:lang="en">Links to an Item or Post which this Item or Post is a reply to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <owl:inverseOf rdf:resource="&sioc;has_reply"/>
+        <rdfs:subPropertyOf rdf:resource="&sioc;related_to"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#scope_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;scope_of">
+        <rdfs:label xml:lang="en">scope of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Role that has a scope of this resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Role"/>
+        <owl:inverseOf rdf:resource="&sioc;has_scope"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#sibling -->
+
+    <owl:ObjectProperty rdf:about="&sioc;sibling">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">sibling</rdfs:label>
+        <rdfs:comment xml:lang="en">An Item may have a sibling or a twin that exists in a different Container, but the siblings may differ in some small way (for example, language, category, etc.). The sibling of this Item should be self-describing (that is, it should contain all available information).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Item"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#space_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;space_of">
+        <rdfs:label xml:lang="en">space of</rdfs:label>
+        <rdfs:comment xml:lang="en">A resource which belongs to this data Space.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Space"/>
+        <owl:inverseOf rdf:resource="&sioc;has_space"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#subscriber_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;subscriber_of">
+        <rdfs:label xml:lang="en">subscriber of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Container that a UserAccount is subscribed to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Container"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:seeAlso rdf:resource="&sioc;feed"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#topic -->
+
+    <owl:ObjectProperty rdf:about="&sioc;topic">
+        <rdfs:label xml:lang="en">topic</rdfs:label>
+        <rdfs:comment xml:lang="en">A topic of interest, linking to the appropriate URI, e.g. in the Open Directory Project or of a SKOS category.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;subject"/>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#usergroup_of -->
+
+    <owl:ObjectProperty rdf:about="&sioc;usergroup_of">
+        <rdfs:label xml:lang="en">usergroup of</rdfs:label>
+        <rdfs:comment xml:lang="en">A Space that the Usergroup has access to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&sioc;Space"/>
+        <rdfs:domain rdf:resource="&sioc;Usergroup"/>
+        <owl:inverseOf rdf:resource="&sioc;has_usergroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/account -->
+
+    <owl:ObjectProperty rdf:about="&foaf;account"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/depiction -->
+
+    <owl:ObjectProperty rdf:about="&foaf;depiction"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;date"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;title"/>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#content -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;content">
+        <rdfs:label xml:lang="en">content</rdfs:label>
+        <rdfs:comment xml:lang="en">The content of the Item in plain text format.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#content_encoded -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;content_encoded">
+        <rdfs:label xml:lang="en">content encoded</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <rdfs:comment xml:lang="en">The encoded content of the Post, contained in CDATA areas.</rdfs:comment>
+        <owl:versionInfo>This property is deprecated. Use content:encoded from the RSS 1.0 content module instead.</owl:versionInfo>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#created_at -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;created_at">
+        <rdfs:label xml:lang="en">created at</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property is deprecated. Use dcterms:created from the Dublin Core ontology instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">When this was created, in ISO 8601 format.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#description -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;description">
+        <rdfs:label xml:lang="en">description</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <rdfs:comment xml:lang="en">The content of the Post.</rdfs:comment>
+        <owl:versionInfo>This property is deprecated. Use sioc:content or other methods (AtomOwl, content:encoded from RSS 1.0, etc.) instead.</owl:versionInfo>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#email_sha1 -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;email_sha1">
+        <rdfs:label xml:lang="en">email sha1</rdfs:label>
+        <rdfs:comment xml:lang="en">An electronic mail address of the UserAccount, encoded using SHA1.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#first_name -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;first_name">
+        <rdfs:label xml:lang="en">first name</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property is deprecated. Use foaf:name or foaf:firstName from the FOAF vocabulary instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">First (real) name of this User. Synonyms include given name or christian name.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#id -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;id">
+        <rdfs:label xml:lang="en">id</rdfs:label>
+        <rdfs:comment xml:lang="en">An identifier of a SIOC concept instance. For example, a user ID. Must be unique for instances of each type of SIOC concept within the same site.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#ip_address -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;ip_address">
+        <rdfs:label xml:lang="en">ip address</rdfs:label>
+        <rdfs:comment xml:lang="en">The IP address used when creating this Item. This can be associated with a creator. Some wiki articles list the IP addresses for the creator or modifiers when the usernames are absent.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Item"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#last_activity_date -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;last_activity_date">
+        <rdfs:label xml:lang="en">last activity date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date and time of the last activity associated with a SIOC concept instance, and expressed in ISO 8601 format. This could be due to a reply Post or Comment, a modification to an Item, etc.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#last_item_date -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;last_item_date">
+        <rdfs:label xml:lang="en">last item date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date and time of the last Post (or Item) in a Forum (or a Container), in ISO 8601 format.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Container"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#last_name -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;last_name">
+        <rdfs:label xml:lang="en">last name</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property is deprecated. Use foaf:name or foaf:surname from the FOAF vocabulary instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Last (real) name of this user. Synonyms include surname or family name.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;UserAccount"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#last_reply_date -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;last_reply_date">
+        <rdfs:label xml:lang="en">last reply date</rdfs:label>
+        <rdfs:comment xml:lang="en">The date and time of the last reply Post or Comment, which could be associated with a starter Item or Post or with a Thread, and expressed in ISO 8601 format.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#modified_at -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;modified_at">
+        <rdfs:label xml:lang="en">modified at</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property is deprecated. Use dcterms:modified from the Dublin Core ontology instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">When this was modified, in ISO 8601 format.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#name -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:comment xml:lang="en">The name of a SIOC concept instance, e.g. a username for a UserAccount, group name for a Usergroup, etc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#note -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;note">
+        <rdfs:label xml:lang="en">note</rdfs:label>
+        <rdfs:comment xml:lang="en">A note associated with this resource, for example, if it has been edited by a UserAccount.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#num_authors -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;num_authors">
+        <rdfs:label xml:lang="en">num authors</rdfs:label>
+        <rdfs:comment xml:lang="en">The number of unique authors (UserAccounts and unregistered posters) who have contributed to this Item, Thread, Post, etc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#num_items -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;num_items">
+        <rdfs:label xml:lang="en">num items</rdfs:label>
+        <rdfs:comment xml:lang="en">The number of Posts (or Items) in a Forum (or a Container).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Container"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#num_replies -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;num_replies">
+        <rdfs:label xml:lang="en">num replies</rdfs:label>
+        <rdfs:comment xml:lang="en">The number of replies that this Item, Thread, Post, etc. has. Useful for when the reply structure is absent.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#num_threads -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;num_threads">
+        <rdfs:label xml:lang="en">num threads</rdfs:label>
+        <rdfs:comment xml:lang="en">The number of Threads (AKA discussion topics) in a Forum.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Forum"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#num_views -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;num_views">
+        <rdfs:label xml:lang="en">num views</rdfs:label>
+        <rdfs:comment xml:lang="en">The number of times this Item, Thread, UserAccount profile, etc. has been viewed.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#subject -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;subject">
+        <rdfs:label xml:lang="en">subject</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <rdfs:comment xml:lang="en">Keyword(s) describing subject of the Post.</rdfs:comment>
+        <owl:versionInfo>This property is deprecated. Use dcterms:subject from the Dublin Core ontology for text keywords and sioc:topic if the subject can be represented by a URI instead.</owl:versionInfo>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#title -->
+
+    <owl:DatatypeProperty rdf:about="&sioc;title">
+        <rdfs:label xml:lang="en">title</rdfs:label>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This property is deprecated. Use dcterms:title from the Dublin Core ontology instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">This is the title (subject line) of the Post. Note that for a Post within a threaded discussion that has no parents, it would detail the topic thread.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+        <rdfs:domain rdf:resource="&sioc;Post"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Community -->
+
+    <owl:Class rdf:about="&sioc;Community">
+        <rdfs:label xml:lang="en">Community</rdfs:label>
+        <owl:disjointWith rdf:resource="&sioc;Item"/>
+        <owl:disjointWith rdf:resource="&sioc;Role"/>
+        <owl:disjointWith rdf:resource="&sioc;UserAccount"/>
+        <rdfs:comment xml:lang="en">Community is a high-level concept that defines an online community and what it consists of.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Container -->
+
+    <owl:Class rdf:about="&sioc;Container">
+        <rdfs:label xml:lang="en">Container</rdfs:label>
+        <owl:disjointWith rdf:resource="&sioc;Item"/>
+        <owl:disjointWith rdf:resource="&sioc;Role"/>
+        <owl:disjointWith rdf:resource="&sioc;User"/>
+        <owl:disjointWith rdf:resource="&sioc;UserAccount"/>
+        <owl:disjointWith rdf:resource="&sioc;Usergroup"/>
+        <rdfs:comment xml:lang="en">An area in which content Items are contained.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Forum -->
+
+    <owl:Class rdf:about="&sioc;Forum">
+        <rdfs:label xml:lang="en">Forum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sioc;Container"/>
+        <rdfs:comment xml:lang="en">A discussion area on which Posts or entries are made.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Item -->
+
+    <owl:Class rdf:about="&sioc;Item">
+        <rdfs:label xml:lang="en">Item</rdfs:label>
+        <owl:disjointWith rdf:resource="&sioc;Role"/>
+        <owl:disjointWith rdf:resource="&sioc;Space"/>
+        <owl:disjointWith rdf:resource="&sioc;User"/>
+        <owl:disjointWith rdf:resource="&sioc;UserAccount"/>
+        <owl:disjointWith rdf:resource="&sioc;Usergroup"/>
+        <rdfs:comment xml:lang="en">An Item is something which can be in a Container.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Post -->
+
+    <owl:Class rdf:about="&sioc;Post">
+        <rdfs:label xml:lang="en">Post</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sioc;Item"/>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+        <rdfs:comment xml:lang="en">An article or message that can be posted to a Forum.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Role -->
+
+    <owl:Class rdf:about="&sioc;Role">
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+        <owl:disjointWith rdf:resource="&sioc;Space"/>
+        <owl:disjointWith rdf:resource="&sioc;User"/>
+        <owl:disjointWith rdf:resource="&sioc;UserAccount"/>
+        <owl:disjointWith rdf:resource="&sioc;Usergroup"/>
+        <rdfs:comment xml:lang="en">A Role is a function of a UserAccount within a scope of a particular Forum, Site, etc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Site -->
+
+    <owl:Class rdf:about="&sioc;Site">
+        <rdfs:label xml:lang="en">Site</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sioc;Space"/>
+        <rdfs:comment xml:lang="en">A Site can be the location of an online community or set of communities, with UserAccounts and Usergroups creating Items in a set of Containers. It can be thought of as a web-accessible data Space.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Space -->
+
+    <owl:Class rdf:about="&sioc;Space">
+        <rdfs:label xml:lang="en">Space</rdfs:label>
+        <owl:disjointWith rdf:resource="&sioc;User"/>
+        <owl:disjointWith rdf:resource="&sioc;UserAccount"/>
+        <owl:disjointWith rdf:resource="&sioc;Usergroup"/>
+        <rdfs:comment xml:lang="en">A Space is a place where data resides, e.g. on a website, desktop, fileshare, etc.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Thread -->
+
+    <owl:Class rdf:about="&sioc;Thread">
+        <rdfs:label xml:lang="en">Thread</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sioc;Container"/>
+        <rdfs:comment xml:lang="en">A container for a series of threaded discussion Posts or Items.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#User -->
+
+    <owl:Class rdf:about="&sioc;User">
+        <rdfs:label xml:lang="en">User</rdfs:label>
+        <owl:equivalentClass rdf:resource="&sioc;UserAccount"/>
+        <rdfs:subClassOf rdf:resource="&foaf;OnlineAccount"/>
+        <owl:disjointWith rdf:resource="&sioc;Usergroup"/>
+        <owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+        <owl:versionInfo>This class is deprecated. Use sioc:UserAccount from the SIOC ontology instead.</owl:versionInfo>
+        <rdfs:comment xml:lang="en">UserAccount is now preferred. This is a deprecated class for a User in an online community site.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#UserAccount -->
+
+    <owl:Class rdf:about="&sioc;UserAccount">
+        <rdfs:label xml:lang="en">User Account</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;OnlineAccount"/>
+        <owl:disjointWith rdf:resource="&sioc;Usergroup"/>
+        <rdfs:comment xml:lang="en">A user account in an online community site.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdfs.org/sioc/ns#Usergroup -->
+
+    <owl:Class rdf:about="&sioc;Usergroup">
+        <rdfs:label xml:lang="en">Usergroup</rdfs:label>
+        <rdfs:comment xml:lang="en">A set of UserAccounts whose owners have a common purpose or interest. Can be used for access control purposes.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Agent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="&foaf;Document"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/OnlineAccount -->
+
+    <owl:Class rdf:about="&foaf;OnlineAccount"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://rdfs.org/sioc/ns# -->
+
+    <owl:Thing rdf:about="http://rdfs.org/sioc/ns#">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <dcterms:description xml:lang="en">SIOC (Semantically-Interlinked Online Communities) is an ontology for describing the information in online communities. 
+This information can be used to export information from online communities and to link them together. The scope of the application areas that SIOC can be used for includes (and is not limited to) weblogs, message boards, mailing lists and chat channels.</dcterms:description>
+        <dcterms:title xml:lang="en">SIOC Core Ontology Namespace</dcterms:title>
+    </owl:Thing>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://rdfs.org/sioc/spec">
+        <rdfs:label>SIOC Core Ontology Specification</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.0.1502) http://owlapi.sourceforge.net -->
+

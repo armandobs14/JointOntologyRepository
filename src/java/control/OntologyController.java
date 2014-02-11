@@ -6,10 +6,12 @@ package control;
 
 import KAO.Kao;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import joint.codegen.ns4ca56aaf.Ontology;
 import joint.codegen.ns4ca56aaf.OntologyClass;
 import joint.codegen.sioc.UserAccount;
+import joint.codegen.types.Tag;
 
 /**
  *
@@ -38,7 +40,7 @@ public class OntologyController extends Controller{
         contador = ontologyKao.retrieveAllInstances().size();
         contador++;
         //classe Ontology da ontologia do repositorio
-        Ontology ontology = ontologyKao.create("ontology" + contador);
+        Ontology ontology = ontologyKao.create("ontology_" + contador);
         //setando suas propriedades
         //setando nome
         ontology.setFoafName(name);
@@ -47,7 +49,13 @@ public class OntologyController extends Controller{
         ontology.setUri(ontologyURI);
         
         //setando versao
-        //ontology.setVersion();
+        StringBuilder query = new StringBuilder();
+        query.append("PREFIX repo:<"+repositoryURI+"#>");
+        query.append("select ?x where {?x repo:uri '").append(ontologyURI).append("'}"); 
+        List ontologiesList = ontologyKao.executeQueryAsList(query.toString());
+        
+        ontology.setVersion(ontologiesList.size());
+        
         //setando caminho
         ontology.setFile_path(filepath);
         //setando comentario
@@ -62,10 +70,15 @@ public class OntologyController extends Controller{
         for (String classURI : classes) {
             setClass.add(OntologyClassController.getOntologyClassByURI(classURI));
         }
-        System.out.println(setClass);
-        //ontology.setHas_class(setClass);
+        ontology.setHas_class(setClass);
         //setando tags (area)
-        //ontology.setHas_tag(tags);
+        //Set<Tag> setTag = new HashSet<Tag>();
+        //String[] tagList = tags.split(",");
+        //    for (String tagName : tagList) {
+        //        setTag.add(TagController.getTagByTagName(tagName));        
+        //}
+        //ontology.setHas_tag(setTag);
+        System.out.println(tags);
         //fechando conexao
         ontologyKao.save();
     }

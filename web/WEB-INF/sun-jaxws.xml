@@ -3,7 +3,4 @@
   <endpoint implementation="service.OntologyOperations" name="OntologyOperations" url-pattern="/OntologyOperations"/>
   <endpoint implementation="service.UserOperations" name="UserOperations" url-pattern="/UserOperations"/>
   <endpoint implementation="service.ForumOperations" name="ForumOperations" url-pattern="/ForumOperations"/>
-  <endpoint implementation="service.UserOperations" name="UserOperations" url-pattern="/UserOperations"/>
-  <endpoint implementation="service.ForumOperations" name="ForumOperations" url-pattern="/ForumOperations"/>
-  <endpoint implementation="service.UserOperations" name="UserOperations" url-pattern="/UserOperations"/>
 </endpoints>

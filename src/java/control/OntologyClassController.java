@@ -14,7 +14,6 @@ import joint.codegen.ns4ca56aaf.OntologyClass;
  * @author armando
  */
 public class OntologyClassController extends Controller{
-    
     /**
      *
      * @param ontologyClassURI
@@ -23,21 +22,26 @@ public class OntologyClassController extends Controller{
     public static OntologyClass getOntologyClassByURI(String ontologyClassURI) {
         Kao ontologyClassKao = new Kao(OntologyClass.class,repositoryURI);
         
+        
         StringBuilder query = new StringBuilder();
         query.append("PREFIX repo:<"+repositoryURI+"#>");
         query.append("select ?x where {?x repo:uri '").append(ontologyClassURI).append("'}"); 
         
         try {
+            // Recupera classe pela URI
             OntologyClass ontologyClass = (OntologyClass) ontologyClassKao.executeQueryAsSingleResult(query.toString());
             return ontologyClass;
         } catch (Exception e) {
+            // Cria classe na base e retorna
             String className = null;
             if(ontologyClassURI.contains("#")){
                 className = ontologyClassURI.split("#")[1];
             }else{
                 className = ontologyClassURI.split(";")[1];
             }
-            OntologyClass ontologyClass  = ontologyClassKao.create(className);
+            int counter = ontologyClassKao.retrieveAllInstances().size() +1;
+            
+            OntologyClass ontologyClass  = ontologyClassKao.create("ontologyClass_"+counter);
             ontologyClass.setFoafName(className);
             ontologyClass.setUri(ontologyClassURI);
             

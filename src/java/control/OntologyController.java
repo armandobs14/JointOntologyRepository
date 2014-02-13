@@ -5,7 +5,6 @@
 package control;
 
 import KAO.Kao;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.List;
@@ -96,7 +95,7 @@ public class OntologyController extends Controller{
         StringBuilder query = new StringBuilder();
         
         query.append("PREFIX repo:<"+repositoryURI+"#>");
-        query.append("PREFIX foaf:<"+foafURI+"#>");
+        query.append("PREFIX foaf:<"+foafURI+">");
         query.append("select ?x where {?x foaf:name '").append(nameOntology.toLowerCase()).append("'}"); 
         
         System.out.println(query.toString());

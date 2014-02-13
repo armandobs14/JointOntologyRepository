@@ -5,13 +5,11 @@
 package service;
 
 
-import com.google.gson.JsonObject;
 import control.OntologyController;
 import java.util.Set;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import joint.codegen.ns4ca56aaf.Ontology;
 
 
 

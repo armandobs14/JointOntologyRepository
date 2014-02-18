@@ -7,9 +7,12 @@ package service;
 
 import control.OntologyController;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import org.semanticweb.owl.align.AlignmentException;
 
 
 
@@ -45,7 +48,11 @@ public class OntologyOperations {
      */
     @WebMethod(operationName = "saveOntology")
     public void saveOntology(@WebParam(name = "ontologyName") String ontologyName,@WebParam(name="ontologyURI") String ontologyURI,@WebParam(name="ontologyFilePath") String ontologyFilePath,@WebParam(name="ontologyComment") Set<String> comment ,@WebParam(name="developersEmail") Set<String> developersEmail,@WebParam(name="has_class") Set<String> has_class,@WebParam(name="tags") Set<String> tags) {
-        ontologyController.saveOntology(ontologyName,ontologyURI ,ontologyFilePath, comment, developersEmail , has_class, tags);
+        try {
+            ontologyController.saveOntology(ontologyName,ontologyURI ,ontologyFilePath, comment, developersEmail , has_class, tags);
+        } catch (AlignmentException ex) {
+            Logger.getLogger(OntologyOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @WebMethod(operationName = "checkOntology")

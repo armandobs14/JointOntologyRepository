@@ -15,4 +15,5 @@ public class Controller {
     public static final String foafURI = "http://xmlns.com/foaf/0.1/";
     public static final String repositoryURI = "http://nees.com.br/ontologyRepository";
     public static final String repositoryURL = "http://localhost:8084/openrdf-sesame/repositories/repo";
+    public static final String alignmentURI = "http://nees.com.br/alignment";
 }

@@ -34,11 +34,13 @@ public class OntologyClassController extends Controller{
         } catch (Exception e) {
             // Cria classe na base e retorna
             String className = null;
-            if(ontologyClassURI.contains("#")){
-                className = ontologyClassURI.split("#")[1];
-            }else{
-                className = ontologyClassURI.split(";")[1];
-            }
+            ontologyClassURI.replace("#","/");
+            ontologyClassURI.replace(";","/");
+            
+            String[] splitedURI = ontologyClassURI.split("/");
+            int splitSize = splitedURI.length;
+            className = splitedURI[splitSize -1];
+            
             int counter = ontologyClassKao.retrieveAllInstances().size() +1;
             
             OntologyClass ontologyClass  = ontologyClassKao.create("ontologyClass_"+counter);

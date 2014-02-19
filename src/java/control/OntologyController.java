@@ -8,7 +8,6 @@ import KAO.Kao;
 import br.ufal.ic.joint.RepositoryFacade;
 import com.google.gson.JsonObject;
 import fr.inrialpes.exmo.align.impl.method.StringDistAlignment;
-import fr.inrialpes.exmo.align.impl.renderer.JSONRendererVisitor;
 import fr.inrialpes.exmo.align.impl.renderer.OWLAxiomsRendererVisitor;
 import java.io.File;
 import java.io.FileWriter;
@@ -87,7 +86,7 @@ public class OntologyController extends Controller{
                 
                 //AlignmentVisitor renderer = new OWLAxiomsRendererVisitor(writer);
                 
-                AlignmentVisitor renderer = new OWLAxiomsRendererVisitor(writer,alignmentURI+"_"+counter);
+                AlignmentVisitor renderer = new OWLAxiomsRendererVisitor(writer,alignmentURI);
                 //AlignmentVisitor renderer = new JSONRendererVisitor(writer);
                 alignment.render(renderer);
             } catch (Exception e) {
@@ -97,7 +96,7 @@ public class OntologyController extends Controller{
                     writer.flush();
                     writer.close();
                     
-                    facade.addOntology(merged.getAbsolutePath(),alignmentURI+"_"+counter);
+                    facade.addOntology(merged.getAbsolutePath(),alignmentURI);
                 }
             } 
         }
@@ -156,7 +155,7 @@ public class OntologyController extends Controller{
         
         query.append("PREFIX repo:<"+repositoryURI+"#>");
         query.append("PREFIX foaf:<"+foafURI+">");
-        query.append("select ?x where {?x foaf:name '").append(nameOntology.toLowerCase()).append("'}"); 
+        query.append("select ?x where {?x foaf:name '").append(nameOntology).append("'}"); 
         
         System.out.println(query.toString());
         
